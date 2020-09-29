@@ -1,0 +1,42 @@
+{
+  "name": "jvx-multiselect",
+  "version": "1.0.5",
+  "description": "A multipurpose - multiselect material web component which manages both synchronous and asynchronous selections",
+  "main": "dist/jvx-multiselect.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "multiselect",
+    "web component",
+    "material"
+  ],
+  "author": "Giovanni Venturelli",
+  "license": "ISC",
+  "files": [
+    "resources.js"
+  ],
+  "dependencies": {
+    "axios": "^0.20.0",
+    "lodash": "^4.17.20",
+    "material-design-icons-iconfont": "^6.1.0",
+    "sass": "^1.26.11",
+    "sass-loader": "^10.0.2",
+    "vue": "^2.6.12",
+    "vuetify": "^2.2.25"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "babel-loader": "^8.1.0",
+    "css-loader": "^4.3.0",
+    "html-webpack-plugin": "^4.5.0",
+    "rimraf": "^3.0.2",
+    "vue-loader": "^15.9.3",
+    "vue-style-loader": "^4.1.2",
+    "vue-template-compiler": "^2.6.12",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  }
+}

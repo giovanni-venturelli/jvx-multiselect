@@ -1,6 +1,6 @@
 {
   "name": "jvx-multiselect",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "description": "A multipurpose - multiselect material web component which manages both synchronous and asynchronous selections",
   "main": "dist/jvx-multiselect.js",
   "scripts": {
@@ -28,6 +28,7 @@
   "devDependencies": {
     "@babel/core": "^7.11.6",
     "@babel/preset-env": "^7.11.5",
+    "@vue/cli-service": "^4.5.6",
     "babel-loader": "^8.1.0",
     "css-loader": "^4.3.0",
     "html-webpack-plugin": "^4.5.0",

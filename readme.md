@@ -1,3 +1,4 @@
+# THE PACKAGE IS CURRENTLY A WORK IN PROGRESS. THIS IS JUST A PLACEHOLDER. IT WILL BE AVAILABLE AND WORKING IN THE NEXT WEEKS
 # Jvx-multiselect
 
 Jvx-multiselect is a multipurpose - multiselect material web component which manages both synchronous and asynchronous selections.

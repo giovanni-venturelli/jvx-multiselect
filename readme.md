@@ -15,6 +15,10 @@ Use `npm link` to include jvx-multiselect in your project.
 
 ###### *app.module.ts*
 ```ts
+import { BrowserModule } from '@angular/platform-browser';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
+import { AppComponent } from './app.component';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -26,6 +30,7 @@ Use `npm link` to include jvx-multiselect in your project.
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
+export class AppModule { }
 ```
 ###### *custom.component.ts*
 ```ts

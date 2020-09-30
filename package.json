@@ -1,6 +1,6 @@
 {
   "name": "jvx-multiselect",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "A multipurpose - multiselect material web component which manages both synchronous and asynchronous selections",
   "main": "dist/jvx-multiselect.js",
   "scripts": {

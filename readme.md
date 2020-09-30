@@ -2,6 +2,8 @@
 # Jvx-multiselect
 
 Jvx-multiselect is a multipurpose - multiselect material web component which manages both synchronous and asynchronous selections.
+## Todo
+* Import vuetify style in the web component
 
 ## Build
 

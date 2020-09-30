@@ -13,7 +13,7 @@ vue-cli-service build --target wc --name jvx-multiselect jvx-multiselect.vue --i
 
 #### Angular10
 
-###### app.module.ts
+###### *app.module.ts*
 ```ts
 @NgModule({
   declarations: [
@@ -27,7 +27,7 @@ vue-cli-service build --target wc --name jvx-multiselect jvx-multiselect.vue --i
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 ```
-###### custom.component.ts
+###### *custom.component.ts*
 ```ts
 import {Component} from '@angular/core';
 import 'jvx-multiselect';
@@ -47,7 +47,7 @@ export class AppComponent {
 }
 ```
 
-###### custom.component.html
+###### *custom.component.html*
 ```angular2html
 <jvx-multiselect [options]="options"></jvx-multiselect>
 ```

@@ -10,7 +10,7 @@ vue-cli-service build --target wc --name jvx-multiselect jvx-multiselect.vue --i
 ```
 
 ## Installation & use
-
+Use `npm link` to include jvx-multiselect in your project.
 #### Angular10
 
 ###### *app.module.ts*

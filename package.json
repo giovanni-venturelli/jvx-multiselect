@@ -1,10 +1,14 @@
 {
   "name": "jvx-multiselect",
-  "version": "1.0.11",
+  "version": "1.0.18",
   "description": "A multipurpose - multiselect material web component which manages both synchronous and asynchronous selections",
   "main": "dist/jvx-multiselect.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "npm-readme": "renamer -f \"/^README.md$/\" -r \"git.README.md\" * && renamer -f \"/^npm.README.md$/\" -r \"README.md\" *",
+    "git-readme": "renamer -f \"/^README.md$/\" -r \"npm.README.md\" * && renamer -f \"/^git.README.md$/\" -r \"README.md\" *",
+    "build-wc": "vue-cli-service build --target wc --name jvx-multiselect jvx-multiselect.vue --inline-vue",
+    "publish-wc": "npm run npm-readme && npm run build-wc && npm publish && npm run git-readme"
   },
   "keywords": [
     "multiselect",
@@ -32,6 +36,7 @@
     "babel-loader": "^8.1.0",
     "css-loader": "^4.3.0",
     "html-webpack-plugin": "^4.5.0",
+    "renamer": "^2.0.1",
     "rimraf": "^3.0.2",
     "vue-loader": "^15.9.3",
     "vue-style-loader": "^4.1.2",

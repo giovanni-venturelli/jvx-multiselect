@@ -1,3 +1,4 @@
+const { VuetifyLoaderPlugin } = require('vuetify-loader')
 
 function enableShadowCss(config) {
   const configs = [
@@ -34,14 +35,12 @@ function enableShadowCss(config) {
 }
 
 
-
-
-
 module.exports = {
   chainWebpack: config => {
     enableShadowCss(config);
+    config.plugin('VuetifyLoaderPlugin').use(VuetifyLoaderPlugin);
     config.plugin('VuetifyLoaderPlugin').tap(args => [{
-      match (originalTag, { kebabTag, camelTag, path, component }) {
+      match(originalTag, {kebabTag, camelTag, path, component}) {
         if (kebabTag.startsWith('core-')) {
           return [camelTag, `import ${camelTag} from '@/components/core/${camelTag.substring(4)}.vue'`]
         }

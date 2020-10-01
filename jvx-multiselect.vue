@@ -1,7 +1,6 @@
 <template>
 
   <div>
-    <link rel="stylesheet" href="../material-design-icons.css" type="text/css">
     <div :class="[
       'jvx-multiselect',
       { 'jvx-multiselect-error': hasErrors === true},

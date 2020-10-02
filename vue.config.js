@@ -1,4 +1,6 @@
-const { VuetifyLoaderPlugin } = require('vuetify-loader')
+const {VuetifyLoaderPlugin} = require('vuetify-loader');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
 
 function enableShadowCss(config) {
   const configs = [
@@ -37,7 +39,7 @@ function enableShadowCss(config) {
 
 module.exports = {
   chainWebpack: config => {
-    enableShadowCss(config);
+    // enableShadowCss(config);
     config.plugin('VuetifyLoaderPlugin').use(VuetifyLoaderPlugin);
     config.plugin('VuetifyLoaderPlugin').tap(args => [{
       match(originalTag, {kebabTag, camelTag, path, component}) {
@@ -46,5 +48,20 @@ module.exports = {
         }
       }
     }])
+  },
+  configureWebpack: {
+    plugins: [
+      new CopyWebpackPlugin({
+        patterns: [{
+          context: 'node_modules/material-design-icons-iconfont/dist',
+          from: '*',
+          to: 'material-icons',
+        },{
+          context: 'node_modules/material-design-icons-iconfont/dist/fonts',
+          from: '*',
+          to: 'material-icons/fonts',
+        }]
+      })
+    ]
   }
 }

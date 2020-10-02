@@ -1,7 +1,7 @@
-<template>
-
-  <div>
-    <div :class="[
+<v-app>
+<div>
+  <link rel="stylesheet" href="material-icons/material-design-icons.css">
+  <div :class="[
       'jvx-multiselect',
       { 'jvx-multiselect-error': hasErrors === true},
       { 'jvx-multiselect-isFocused': isOpen === true || isFocused === true },
@@ -9,180 +9,180 @@
       { 'jvx-multiselect-has-state': isOpen || hasErrors === true || disabled },
       { 'jvx-multiselect-disabled': disabled }
     ]"
-         :key="key"
-         ref="container">
-      <v-menu :close-on-content-click="false"
-              :close-on-click="closeOnClick"
-              max-height="312px"
-              offset-y
-              :data-cy="'menu-'+dataCy"
-              origin="top center"
-              ref="menu"
-              v-model="isOpen">
-        <template v-slot:activator="{ on }">
-          <div :class="[
+       :key="key"
+       ref="container">
+    <v-menu :close-on-content-click="false"
+            :close-on-click="closeOnClick"
+            max-height="312px"
+            offset-y
+            :data-cy="'menu-'+dataCy"
+            origin="top center"
+            ref="menu"
+            v-model="isOpen">
+      <template v-slot:activator="{ on }">
+        <div :class="[
             { 'input-container': true },
             {'menu-is-open': isOpen},
             { 'selection-active': model != null && model.length > 0 }
           ]">
-            <!-- Placeholder -->
-            <v-label>{{ placeholder }}</v-label>
+          <!-- Placeholder -->
+          <v-label>{{ placeholder }}</v-label>
 
-            <!-- Selected Options -->
-            <div @click="_onActivatorClick" :data-cy="dataCy"
-                 class="input-container__selected-container">
-              <div class="input-container__selected">
-                <v-chip :key="'multi-selected-' + item[itemValue]"
-                        @click:close="_removeItem(item)"
-                        class="mr-1 mb-1 input__item"
-                        close
-                        color="primary"
-                        small
-                        v-for="item in multiModel">
-                  {{ item[itemText] }}
-                </v-chip>
-                <div :key="'selected-' + item[itemValue]"
-                     v-for="item in singleModel">
-                  {{ item[itemText] }}
-
-                </div>
-              </div>
-              <div v-on="on"></div>
-              <v-icon @click.stop="_removeItem(model[0])"
-                      v-if="model !== null && model.length > 0 && multi === false && clearable === true">
-                close
-              </v-icon>
-              <div class="input-container__arrow">
-                <v-icon :disabled="disabled"
-                        v-if="isLoading === false">arrow_drop_down
-                </v-icon>
-
-                <div class="lds-ring"
-                     v-if="isLoading === true">
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                </div>
+          <!-- Selected Options -->
+          <div @click="_onActivatorClick" :data-cy="dataCy"
+               class="input-container__selected-container">
+            <div class="input-container__selected">
+              <v-chip :key="'multi-selected-' + item[itemValue]"
+                      @click:close="_removeItem(item)"
+                      class="mr-1 mb-1 input__item"
+                      close
+                      color="primary"
+                      small
+                      v-for="item in multiModel">
+                {{ item[itemText] }}
+              </v-chip>
+              <div :key="'selected-' + item[itemValue]"
+                   v-for="item in singleModel">
+                {{ item[itemText] }}
 
               </div>
             </div>
+            <div v-on="on"></div>
+            <v-icon @click.stop="_removeItem(model[0])"
+                    v-if="model !== null && model.length > 0 && multi === false && clearable === true">
+              close
+            </v-icon>
+            <div class="input-container__arrow">
+              <v-icon :disabled="disabled"
+                      v-if="isLoading === false">arrow_drop_down
+              </v-icon>
+
+              <div class="lds-ring"
+                   v-if="isLoading === true">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+
+            </div>
           </div>
+        </div>
 
-          <!-- Hidden input for validation -->
-          <v-text-field :disabled="disabled"
-                        :error="hasErrors"
-                        :rules="rules"
-                        :validate-on-blur="true"
-                        class="hidden-input"
-                        ref="hiddenInput"
-                        v-model="inputModel"/>
-        </template>
+        <!-- Hidden input for validation -->
+        <v-text-field :disabled="disabled"
+                      :error="hasErrors"
+                      :rules="rules"
+                      :validate-on-blur="true"
+                      class="hidden-input"
+                      ref="hiddenInput"
+                      v-model="inputModel"/>
+      </template>
 
-        <!-- Search -->
-        <div :class="[
+      <!-- Search -->
+      <div :class="[
           'menu-container',
           { 'has-search-bar': searchInput },
           { 'has-footer': footer }
         ]">
-          <div>
-            <v-text-field :placeholder="searchLabel"
-                          @keyup="_onSearch" background-color="transparent"
-                          class="ma-0 pa-0 jvx-multiselect-search-field"
-                          dense
-                          flat
-                          @click="_onClick"
-                          @click:append="$emit('showAdvancedSearch')"
-                          @click:clear="_onSearch"
-                          hide-details
-                          ref="inputField"
-                          solo
-                          v-if="searchInput"
-                          v-model="searchValue">
+        <div>
+          <v-text-field :placeholder="searchLabel"
+                        @keyup="_onSearch" background-color="transparent"
+                        class="ma-0 pa-0 jvx-multiselect-search-field"
+                        dense
+                        flat
+                        @click="_onClick"
+                        @click:append="$emit('showAdvancedSearch')"
+                        @click:clear="_onSearch"
+                        hide-details
+                        ref="inputField"
+                        solo
+                        v-if="searchInput"
+                        v-model="searchValue">
 
-              <template v-slot:append>
-                <v-btn @click="$emit('showAdvancedSearch')" icon v-if="advancedSearch">
-                  <v-icon>
-                    more_vert
-                  </v-icon>
-                </v-btn>
+            <template v-slot:append>
+              <v-btn @click="$emit('showAdvancedSearch')" icon v-if="advancedSearch">
+                <v-icon>
+                  more_vert
+                </v-icon>
+              </v-btn>
 
-                <v-tooltip left
-                           v-if="dirtyAdvancedSearch">
-                  <template v-slot:activator="{ on }">
-                    <v-btn @click="_handleAdvancedSearchClean" absolute right
-                           class="accent justify-center SearchButton__clean-btn" icon width="13" height="13"
-                           v-on="on">
-                      <v-icon :size="$vuetify.breakpoint.smAndDown ? 6 : 13"
-                              class="SearchButton__clean-icon"
-                              color="white">clear
-                      </v-icon>
-                    </v-btn>
-                  </template>
-                  <span>{{ resources.cleanAdvancedSearch }}</span>
-                </v-tooltip>
-              </template>
-
-
-            </v-text-field>
+              <v-tooltip left
+                         v-if="dirtyAdvancedSearch">
+                <template v-slot:activator="{ on }">
+                  <v-btn @click="_handleAdvancedSearchClean" absolute right
+                         class="accent justify-center SearchButton__clean-btn" icon width="13" height="13"
+                         v-on="on">
+                    <v-icon :size="$vuetify.breakpoint.smAndDown ? 6 : 13"
+                            class="SearchButton__clean-icon"
+                            color="white">clear
+                    </v-icon>
+                  </v-btn>
+                </template>
+                <span>{{ resources.cleanAdvancedSearch }}</span>
+              </v-tooltip>
+            </template>
 
 
-          </div>
+          </v-text-field>
 
-          <!-- Selectable Items -->
-          <div :class="[
+
+        </div>
+
+        <!-- Selectable Items -->
+        <div :class="[
             'menu-content',
             { 'menu-content-prevent-scroll': isLoading }
           ]"
-               @scroll="_infiniteScroll"
-               ref="scrollable">
-            <div>
-              <v-list :data-cy="dataCy" v-if="!noData">
-                <v-list-item :class="[
+             @scroll="_infiniteScroll"
+             ref="scrollable">
+          <div>
+            <v-list :data-cy="dataCy" v-if="!noData">
+              <v-list-item :class="[
                   { 'item-selected primary lighten-2': item.jvxSelected }
                 ]"
-                             :key="'selectable-' + item[itemValue]"
-                             @click="_addItem(item)"
-                             v-for="item in selectableItems">
-                  <v-list-item-title v-if="!_hasSlot('default')">{{ item[itemText] }}</v-list-item-title>
-                  <v-list-item-title v-if="_hasSlot('default')">
-                    <slot :name="'default'" v-bind:item="item"/>
-                  </v-list-item-title>
-                  <v-list-item-subtitle v-if="$scopedSlots['subtitle']">
-                    <slot :name="'subtitle'" v-bind:item="item"/>
-                  </v-list-item-subtitle>
-                </v-list-item>
+                           :key="'selectable-' + item[itemValue]"
+                           @click="_addItem(item)"
+                           v-for="item in selectableItems">
+                <v-list-item-title v-if="!_hasSlot('default')">{{ item[itemText] }}</v-list-item-title>
+                <v-list-item-title v-if="_hasSlot('default')">
+                  <slot :name="'default'" v-bind:item="item"/>
+                </v-list-item-title>
+                <v-list-item-subtitle v-if="$scopedSlots['subtitle']">
+                  <slot :name="'subtitle'" v-bind:item="item"/>
+                </v-list-item-subtitle>
+              </v-list-item>
 
-              </v-list>
-              <v-list v-else>
-                <v-list-item>
-                  <v-list-item-title>{{
-                      resources.noDataAvailable
-                    }}
-                  </v-list-item-title>
-                </v-list-item>
-              </v-list>
-            </div>
+            </v-list>
+            <v-list v-else>
+              <v-list-item>
+                <v-list-item-title>{{
+                    resources.noDataAvailable
+                  }}
+                </v-list-item-title>
+              </v-list-item>
+            </v-list>
           </div>
+        </div>
 
-          <!-- Footer -->
-          <div class="menu-footer"
-               v-if="footer">
-            <div class="menu-footer__info">
-              {{ selectableItems.length }}/{{ totalRows }}
-            </div>
-            <div class="menu-footer__buttons-container">
-              <div class="buttons">
-                <slot :items="selectableItems"
-                      name="buttons"/>
-              </div>
+        <!-- Footer -->
+        <div class="menu-footer"
+             v-if="footer">
+          <div class="menu-footer__info">
+            {{ selectableItems.length }}/{{ totalRows }}
+          </div>
+          <div class="menu-footer__buttons-container">
+            <div class="buttons">
+              <slot :items="selectableItems"
+                    name="buttons"/>
             </div>
           </div>
         </div>
-      </v-menu>
-    </div>
+      </div>
+    </v-menu>
   </div>
-</template>
+</div>
+</v-app>
 <script>
 
 /**
@@ -790,6 +790,8 @@ export const EVENTS = {
 
 <style lang="scss"
        scoped>
+@import "./node_modules/material-design-icons-iconfont/dist/material-design-icons.css";
+
 .jvx-multiselect {
 
   padding-top: 12px;
@@ -1077,5 +1079,6 @@ $contentHeight: 205px;
   justify-content: center;
   align-items: center;
 }
+
 /*# sourceMappingURL=vuetify.css.map*/
 </style>

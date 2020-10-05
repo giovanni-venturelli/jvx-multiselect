@@ -1,8 +1,8 @@
 {
   "name": "jvx-multiselect",
-  "version": "1.0.45",
+  "version": "1.0.93",
   "description": "A multipurpose - multiselect material web component which manages both synchronous and asynchronous selections",
-  "main": "dist/jvx-multiselect.js",
+  "main": "dist/jvx-multiselect.umd.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "npm-readme": "renamer -f \"/^README.md$/\" -r \"git.README.md\" * && renamer -f \"/^npm.README.md$/\" -r \"README.md\" *",
@@ -20,7 +20,10 @@
   "license": "ISC",
   "files": [
     "resources.js",
-    "node_modules/material-design-icons-iconfont/dist/material-design-icons.css"
+    "dist/jvx-multiselect.css",
+    "dist/jvx-multiselect.common.js",
+    "node_modules/material-design-icons-iconfont/dist/material-design-icons.css",
+    "npm.README.md"
   ],
   "dependencies": {
     "axios": "^0.20.0",
@@ -29,6 +32,7 @@
     "sass": "^1.26.11",
     "sass-loader": "^10.0.2",
     "vue": "^2.6.12",
+    "vue-custom-element": "^3.2.14",
     "vuetify": "^2.2.25"
   },
   "devDependencies": {

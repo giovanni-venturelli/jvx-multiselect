@@ -1,13 +1,13 @@
 {
   "name": "jvx-multiselect",
-  "version": "1.0.93",
+  "version": "1.0.128",
   "description": "A multipurpose - multiselect material web component which manages both synchronous and asynchronous selections",
   "main": "dist/jvx-multiselect.umd.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "npm-readme": "renamer -f \"/^README.md$/\" -r \"git.README.md\" * && renamer -f \"/^npm.README.md$/\" -r \"README.md\" *",
     "git-readme": "renamer -f \"/^README.md$/\" -r \"npm.README.md\" * && renamer -f \"/^git.README.md$/\" -r \"README.md\" *",
-    "build-wc": "vue-cli-service build --target wc --name jvx-multiselect jvx-multiselect.vue --inline-vue",
+    "build-wc": "vue-cli-service build --target lib --name jvx-multiselect  main.js --inline-vue",
     "publish-wc-minor": "npm version patch --no-git-tag-version && npm run npm-readme && npm run build-wc && git add . && npm publish && npm run git-readme && git add .",
     "publish-wc": "npm run npm-readme && npm run build-wc && npm publish && npm run git-readme"
   },

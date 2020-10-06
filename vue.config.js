@@ -30,7 +30,9 @@ function enableShadowCss(config) {
     config.module.rule('stylus').oneOf('normal').use('vue-style-loader'),
   ];
   configs.forEach(c => c.tap(options => {
-    options.shadowMode = true;
+    if(options) {
+      options.shadowMode = true;
+    }
     return options;
   }));
 }

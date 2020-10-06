@@ -182,7 +182,6 @@
         </v-menu>
       </div>
     </div>
-    <div>is open: {{ this.isOpen }}</div>
   </v-app>
 </template>
 <script>
